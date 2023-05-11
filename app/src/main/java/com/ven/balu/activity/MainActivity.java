@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "https://www.google.com";
 
-// Request a string response from the provided URL.
+        // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -78,12 +78,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-// Add the request to the RequestQueue.
+        // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
 
     private void getName() {
-        String url = Constants.ROOT_URL + "users/1";
+        String url = Constants.ROOT_URL + "customers/1";
         RequestQueue queue = Volley.newRequestQueue(this);
         System.out.println("create Queue");
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

@@ -1,11 +1,20 @@
 package com.ven.balu.dto;
 
-import com.ven.balu.model.User;
+import com.ven.balu.model.Customer;
 
 public class LoginResponse {
     private boolean success;
     private String message;
-    private User user;
+    private Customer customer;
+
+    public LoginResponse() {
+    }
+
+    public LoginResponse(boolean success, String message, Customer customer) {
+        this.success = success;
+        this.message = message;
+        this.customer = customer;
+    }
 
     public boolean isSuccess() {
         return success;
@@ -23,19 +32,11 @@ public class LoginResponse {
         this.message = message;
     }
 
-    public User getUser() {
-        return user;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
-
-    public LoginResponse(boolean success, String message, User user) {
-        this.success = success;
-        this.message = message;
-        this.user = user;
-    }
-
-
 }

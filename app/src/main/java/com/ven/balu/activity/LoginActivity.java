@@ -16,6 +16,7 @@ import com.ven.balu.common.Constants;
 import com.ven.balu.data.SharedPreferenceManager;
 import com.ven.balu.dto.LoginRequest;
 import com.ven.balu.dto.LoginResponse;
+import com.ven.balu.model.Customer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,9 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     LoginResponse res = response.body();
                     if (res.isSuccess()) {
-                        // Thông tin đăng nhập hợp lệ, Lưu thông tin đăng nhập
-                        Long userID = res.getUser().getId();
-                        SharedPreferenceManager.getInstance(getApplicationContext()).saveLoggedUserID(userID);
+                        // TODO Thông tin đăng nhập hợp lệ, Lưu thông tin đăng nhập
 
                         // Chuyển đổi Activity
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
