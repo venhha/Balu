@@ -1,42 +1,26 @@
 package com.ven.balu.dto;
 
+import com.google.gson.annotations.SerializedName;
 import com.ven.balu.model.Customer;
+import com.ven.balu.model.SimpleCustomer;
 
 public class LoginResponse {
-    private boolean success;
+    @SerializedName("isValid")
+    private boolean isValid;
+    @SerializedName("message")
     private String message;
+    @SerializedName("customer")
     private Customer customer;
 
-    public LoginResponse() {
-    }
-
-    public LoginResponse(boolean success, String message, Customer customer) {
-        this.success = success;
-        this.message = message;
-        this.customer = customer;
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public boolean isValid() {
+        return isValid;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public Customer getCustomer() {
         return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 }

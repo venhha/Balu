@@ -1,25 +1,34 @@
 package com.ven.balu.model;
 
-import java.sql.Date;
+import com.google.gson.annotations.SerializedName;
 
 public class Customer {
+    @SerializedName("customerId")
     private Integer customerId;
-
+    @SerializedName("firstName")
     private String firstName;
+    @SerializedName("lastName")
     private String lastName;
+    @SerializedName("gender")
     private String gender;
-    private Date dob;
-
+    @SerializedName("dob")
+    private String dob;
+    @SerializedName("address")
     private String address;
+    @SerializedName("email")
     private String email;
+    @SerializedName("phoneNumber")
     private String phoneNumber;
-
+    @SerializedName("username")
     private String username;
+    @SerializedName("password")
     private String password;
+    @SerializedName("avatarPath")
     private String avatarPath;
-    private boolean isActive = true;
-
+    @SerializedName("active")
+    private boolean active;
     // Getter Setter
+
     public Integer getCustomerId() {
         return customerId;
     }
@@ -36,7 +45,7 @@ public class Customer {
         return gender;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
@@ -65,7 +74,7 @@ public class Customer {
     }
 
     public boolean isActive() {
-        return isActive;
+        return active;
     }
 
     public void setCustomerId(Integer customerId) {
@@ -84,7 +93,7 @@ public class Customer {
         this.gender = gender;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
@@ -113,7 +122,25 @@ public class Customer {
     }
 
     public void setActive(boolean active) {
-        isActive = active;
+        active = active;
+    }
+
+    public Customer() {
+    }
+
+    public Customer(Integer customerId, String firstName, String lastName, String gender, String dob, String address, String email, String phoneNumber, String username, String password, String avatarPath, boolean active) {
+        this.customerId = customerId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.dob = dob;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.avatarPath = avatarPath;
+        this.active = active;
     }
 
     // Private constructor --> cannot new Customer() outside this class
@@ -129,7 +156,7 @@ public class Customer {
         this.username = builder.username;
         this.password = builder.password;
         this.avatarPath = builder.avatarPath;
-        this.isActive = builder.isActive;
+        this.active = builder.active;
     }
 
     // static builder method || create Customer with required attributes
@@ -146,12 +173,12 @@ public class Customer {
 
 
         private String gender;
-        private Date dob;
+        private String dob;
         private String address;
         private String email;
         private String phoneNumber;
         private String avatarPath;
-        private boolean isActive = true;
+        private boolean active;
 
         public Builder(Integer customerId, String firstName, String lastName, String username, String password) {
             this.customerId = customerId;
@@ -166,7 +193,7 @@ public class Customer {
             return this;
         }
 
-        public Builder dob(Date dob) {
+        public Builder dob(String dob) {
             this.dob = dob;
             return this;
         }
@@ -191,13 +218,31 @@ public class Customer {
             return this;
         }
 
-        public Builder isActive(boolean isActive) {
-            this.isActive = isActive;
+        public Builder isActive(boolean active) {
+            this.active = active;
             return this;
         }
 
         public Customer build() {
             return new Customer(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", dob='" + dob + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", avatarPath='" + avatarPath + '\'' +
+                ", active=" + active +
+                '}';
     }
 }
