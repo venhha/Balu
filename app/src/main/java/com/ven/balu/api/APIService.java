@@ -2,7 +2,8 @@ package com.ven.balu.api;
 
 import com.ven.balu.dto.LoginRequest;
 import com.ven.balu.dto.LoginResponse;
-import com.ven.balu.dto.LoginResponse2;
+import com.ven.balu.dto.RegisterRequest;
+import com.ven.balu.dto.RegisterResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -12,6 +13,6 @@ public interface APIService {
     @POST("auth/login")
     Call<LoginResponse> login(@Body LoginRequest requestData);
 
-    @POST("auth/login")
-    Call<LoginResponse2> login2(@Body LoginRequest requestData);
+    @POST("auth/register")
+    Call<RegisterResponse> register(@Body RegisterRequest requestData);
 }

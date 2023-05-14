@@ -3,13 +3,13 @@ package com.ven.balu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ven.balu.R;
@@ -19,7 +19,6 @@ import com.ven.balu.common.Constants;
 import com.ven.balu.data.SharedPreferenceManager;
 import com.ven.balu.dto.LoginRequest;
 import com.ven.balu.dto.LoginResponse;
-import com.ven.balu.dto.LoginResponse2;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,15 +27,15 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
     private APIService apiService;
     Button btnLogin;
-    EditText edtUsername;
-    EditText edtPassword;
+    EditText et_username, et_password;
+    TextView btn_signupHere;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // *init
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title not the title bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//int flag, int mask
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
         // *processing
         try {
@@ -46,49 +45,10 @@ public class LoginActivity extends AppCompatActivity {
         }
         bindViews();
     }
-
-    private void testLogin() {
-        // chứa dữ liệu được nhập từ user
-        LoginRequest loginRequestData = new LoginRequest(edtUsername.getText().toString(), edtPassword.getText().toString());
-        System.out.println(edtUsername.getText().toString());
-        System.out.println(edtPassword.getText().toString());
-        // tạo đối tượng retrofit để xử lý dữ liệu từ server
-        apiService = RetrofitClient.getInstance().getRetrofit(Constants.ROOT_URL).create(APIService.class);
-        System.out.println("DONE apiService");
-        Call<LoginResponse2> call = apiService.login2(loginRequestData);
-        System.out.println("DONE init call");
-        call.enqueue(new Callback<LoginResponse2>() {
-            @Override
-            public void onResponse(Call<LoginResponse2> call, Response<LoginResponse2> response) {
-                LoginResponse2 res = response.body();
-                System.out.println("DONE get res");
-
-                System.out.println(res.getMessage());
-                System.out.println(res.isValid());
-                if (res.getCustomer().getCustomerId() != 0) {
-                    System.out.println(res.getCustomer().getCustomerId());
-                    System.out.println(res.getCustomer().getDob());
-                    System.out.println(res.getCustomer().getUsername());
-                    System.out.println(res.getCustomer().getPassword());
-                    System.out.println(res.getCustomer().isActive());
-                    System.out.println("DONE");
-                } else {
-                    System.out.println("cus null");
-                    System.out.println(res.getCustomer().getCustomerId());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<LoginResponse2> call, Throwable t) {
-                System.out.println("ERROR");
-            }
-        });
-    }
-
     private void handleLogin() {
 
         // Đối tượng giữ dữ liệu nhập vào --LoginRequest
-        LoginRequest loginRequestData = new LoginRequest(edtUsername.getText().toString(), edtPassword.getText().toString());
+        LoginRequest loginRequestData = new LoginRequest(et_username.getText().toString(), et_password.getText().toString());
 
         // Dùng retrofit để lấy dữ liệu từ server
         apiService = RetrofitClient.getInstance().getRetrofit(Constants.ROOT_URL).create(APIService.class);
@@ -135,8 +95,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void bindViews() {
         btnLogin = findViewById(R.id.btn_Login);
-        edtUsername = findViewById(R.id.et_username);
-        edtPassword = findViewById(R.id.et_password);
+        et_username = findViewById(R.id.et_username);
+        et_password = findViewById(R.id.et_password);
+        btn_signupHere = findViewById(R.id.btn_signupHere);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +108,13 @@ public class LoginActivity extends AppCompatActivity {
                     System.out.println("ERROR handleLogin");
                     e.printStackTrace();
                 }
+            }
+        });
+        btn_signupHere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -2,7 +2,6 @@ package com.ven.balu.dto;
 
 import com.google.gson.annotations.SerializedName;
 import com.ven.balu.model.Customer;
-import com.ven.balu.model.SimpleCustomer;
 
 public class LoginResponse {
     @SerializedName("isValid")

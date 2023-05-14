@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.ven.balu.R;
 import com.ven.balu.data.SharedPreferenceManager;
@@ -22,8 +23,22 @@ public class HomeActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//int flag, int mask
         setContentView(R.layout.activity_home);
 
+
+        //
         bindViews();
     }
+
+    private void handleCustomerLogOut() {
+        SharedPreferenceManager manager = SharedPreferenceManager.getInstance(getApplicationContext());
+        manager.logout();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+
+        Toast.makeText(this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
+    }
+
+
 
     private void bindViews() {
         btn_Home = findViewById(R.id.btn_Home);
@@ -37,13 +52,13 @@ public class HomeActivity extends AppCompatActivity {
                 handleCustomerLogOut();
             }
         });
-    }
 
-    private void handleCustomerLogOut() {
-        SharedPreferenceManager manager = SharedPreferenceManager.getInstance(getApplicationContext());
-        manager.logout();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
+        btn_Profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

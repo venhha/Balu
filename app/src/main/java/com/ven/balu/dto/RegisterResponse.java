@@ -1,24 +1,24 @@
-package com.ven.balu.model;
+package com.ven.balu.dto;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.sql.Date;
-
-public class SimpleCustomer {
+public class RegisterResponse {
     @SerializedName("customerId")
-    private int customerId;
+    private Integer customerId;
     @SerializedName("firstName")
     private String firstName;
     @SerializedName("lastName")
     private String lastName;
-    @SerializedName("dob")
-    private Date dob;
     @SerializedName("gender")
     private String gender;
+    @SerializedName("dob")
+    private String dob;
     @SerializedName("address")
     private String address;
     @SerializedName("email")
     private String email;
+    @SerializedName("phoneNumber")
+    private String phoneNumber;
     @SerializedName("username")
     private String username;
     @SerializedName("password")
@@ -27,9 +27,26 @@ public class SimpleCustomer {
     private String avatarPath;
     @SerializedName("active")
     private boolean active;
+    // Getter Setter
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 
     public String getGender() {
         return gender;
+    }
+
+    public String getDob() {
+        return dob;
     }
 
     public String getAddress() {
@@ -40,20 +57,8 @@ public class SimpleCustomer {
         return email;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public Date getDob() {
-        return dob;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public String getUsername() {
@@ -64,11 +69,11 @@ public class SimpleCustomer {
         return password;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
     public String getAvatarPath() {
         return avatarPath;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 }
