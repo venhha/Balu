@@ -87,14 +87,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvFullName_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/et_FullName_profile"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="12dp"
+                android:background="@drawable/edittext_white"
                 android:elevation="3dp"
                 android:text="Nguyễn Văn A"
-                android:textColor="#fff"
+                android:textAlignment="center"
+                android:textColor="#000"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/iv_avatar_profile"
@@ -106,23 +108,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:paddingTop="5dp"
                 android:text="username"
-                android:textColor="#FFFFFF"
+                android:textColor="#f00"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvFullName_profile"
+                app:layout_constraintTop_toBottomOf="@+id/et_FullName_profile"
                 app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView
+            android:id="@+id/scrollView3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnEditProfile"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_SaveEditProfile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
@@ -143,10 +147,8 @@
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.292">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/tvCustomerID_profile"
@@ -155,16 +157,30 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="16dp"
-                        android:background="@drawable/edittext_white"
                         android:ems="10"
                         android:gravity="center"
-                        android:text="UID: 1"
+                        android:text="UID"
                         android:textAlignment="center"
                         android:textColor="#ff0000"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/tvPhoneNumber_profile"
+                    <EditText
+                        android:id="@+id/et_PhoneNumber_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/edittext_white_blackborder"
+                        android:ems="10"
+                        android:gravity="center_vertical"
+                        android:hint="Phone Number"
+                        android:inputType="phone"
+                        android:paddingStart="10dp"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/et_Email_profile"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginStart="16dp"
@@ -173,12 +189,13 @@
                         android:background="@drawable/edittext_white"
                         android:ems="10"
                         android:gravity="center_vertical"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
                         android:paddingStart="10dp"
-                        android:text="tvPhoneNumber: v"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/tvEmail_profile"
+                    <EditText
+                        android:id="@+id/et_Address_profile"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginStart="16dp"
@@ -187,12 +204,13 @@
                         android:background="@drawable/edittext_white"
                         android:ems="10"
                         android:gravity="center_vertical"
+                        android:hint="Address"
+                        android:inputType="text"
                         android:paddingStart="10dp"
-                        android:text="tvEmail: v"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/tvAddress_profile"
+                    <EditText
+                        android:id="@+id/et_Dob_profile"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginStart="16dp"
@@ -201,12 +219,13 @@
                         android:background="@drawable/edittext_white"
                         android:ems="10"
                         android:gravity="center_vertical"
+                        android:hint="Date of Birth"
+                        android:inputType="date"
                         android:paddingStart="10dp"
-                        android:text="tvAddress: v"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/tvDob_profile"
+                    <EditText
+                        android:id="@+id/et_Gender_profile"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginStart="16dp"
@@ -215,25 +234,10 @@
                         android:background="@drawable/edittext_white"
                         android:ems="10"
                         android:gravity="center_vertical"
+                        android:hint="Gender"
+                        android:inputType="text"
                         android:paddingStart="10dp"
-                        android:text="tvDob: v"
                         android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/tvGender_profile"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@drawable/edittext_white"
-                        android:ems="10"
-                        android:gravity="center_vertical"
-                        android:paddingStart="10dp"
-                        android:text="tvGender: v"
-                        android:textSize="18sp" />
-
-
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -241,7 +245,7 @@
         </ScrollView>
 
         <LinearLayout
-            android:id="@+id/btnEditProfile"
+            android:id="@+id/btn_SaveEditProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -258,7 +262,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="0.5"
-                app:srcCompat="@drawable/icons8_create_100" />
+                app:srcCompat="@android:drawable/ic_menu_save" />
 
             <TextView
                 android:id="@+id/textView"
@@ -266,7 +270,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="0.5"
                 android:gravity="center_vertical"
-                android:text="Edit Profile"
+                android:text="Save"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:textStyle="bold" />

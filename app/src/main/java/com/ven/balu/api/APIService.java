@@ -1,5 +1,7 @@
 package com.ven.balu.api;
 
+import com.ven.balu.dto.CustomerResponse;
+import com.ven.balu.dto.EditProfileRequest;
 import com.ven.balu.dto.LoginRequest;
 import com.ven.balu.dto.LoginResponse;
 import com.ven.balu.dto.RegisterRequest;
@@ -15,4 +17,7 @@ public interface APIService {
 
     @POST("auth/register")
     Call<RegisterResponse> register(@Body RegisterRequest requestData);
+
+    @POST("profile/edit")
+    Call<CustomerResponse> editProfile(@Body EditProfileRequest requestData);
 }

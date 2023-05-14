@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
                     RegisterResponse res = response.body();
                     if (res.getCustomerId() != 0) {
                         finish();
-                        Toast.makeText(RegisterActivity.this, "Đăng ký thành công, xin mời đăng nhập!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Đăng ký thành công\nMời bạn đăng nhập!", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(RegisterActivity.this, "Đăng ký thất bại (đã có username hoặc sđt)", Toast.LENGTH_SHORT).show();
                     }

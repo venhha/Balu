@@ -1,10 +1,8 @@
-package com.ven.balu.model;
+package com.ven.balu.dto;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.sql.Date;
-
-public class Customer2 {
+public class CustomerResponse {
     @SerializedName("customerId")
     private Integer customerId;
     @SerializedName("firstName")
@@ -14,7 +12,7 @@ public class Customer2 {
     @SerializedName("gender")
     private String gender;
     @SerializedName("dob")
-    private Date dob;
+    private String dob;
     @SerializedName("address")
     private String address;
     @SerializedName("email")
@@ -29,6 +27,7 @@ public class Customer2 {
     private String avatarPath;
     @SerializedName("active")
     private boolean active;
+    // Getter Setter
 
     public Integer getCustomerId() {
         return customerId;
@@ -46,7 +45,7 @@ public class Customer2 {
         return gender;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 

@@ -62,17 +62,16 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferenceManager manager = SharedPreferenceManager.getInstance(getApplicationContext());
                     manager.saveCustomerId(res.getCustomer().getCustomerId()); //customerId
                     manager.saveCustomer(res.getCustomer()); //customer
-                    System.out.println(manager.isLogin());
 
                     // Chuyển đổi Activity
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
                     finish();
-                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công với ID " + res.getCustomer().getCustomerId().toString(), Toast.LENGTH_SHORT).show();
 
                 } else {
                     // Thông tin đăng nhập không hợp lệ
-                    Toast.makeText(LoginActivity.this, "Đăng nhập thất bại, tài khoản không tồn tại !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Đăng nhập thất bại, tài khoản không tồn tại!", Toast.LENGTH_SHORT).show();
                 }
             }
 
